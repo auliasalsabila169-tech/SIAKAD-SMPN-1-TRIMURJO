@@ -24,6 +24,8 @@
         "APP_NAME": "SIAKAD SMPN 1 TRIMURJO",
         "APP_ENV": "production",
         "APP_DEBUG": "false",
+        "APP_URL": "https://auliasalsabila.vercel.app",
+        "ASSET_URL": "https://auliasalsabila.vercel.app",
         "APP_KEY": "base64:witHkD7Z79XJJZM0k5ATnTm2CZpHYCIYaE3sBINWQxw=",
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
