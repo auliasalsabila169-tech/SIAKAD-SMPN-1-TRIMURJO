@@ -39,7 +39,7 @@
         "DB_PORT": "4000",
         "DB_DATABASE": "siakad_smpn1_trimurjo",
         "DB_USERNAME": "3SSdq1KBgVVEXVd.root",
-        "DB_PASSWORD": "<PASSWORD>",
+        "DB_PASSWORD": "RJCd6B1ubzKHVYId",
         "MYSQL_ATTR_SSL_CA": "ca.pem"
     }
 }
