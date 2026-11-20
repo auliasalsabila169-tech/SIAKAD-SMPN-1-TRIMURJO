@@ -34,7 +34,12 @@
         "CACHE_DRIVER": "array",
         "LOG_CHANNEL": "stderr",
         "SESSION_DRIVER": "cookie",
-        "DB_CONNECTION": "sqlite",
-        "DB_DATABASE": "/tmp/database.sqlite"
+        "DB_CONNECTION": "mysql",
+        "DB_HOST": "gateway01.ap-northeast-1.prod.aws.tidbcloud.com",
+        "DB_PORT": "4000",
+        "DB_DATABASE": "siakad_smpn1_trimurjo",
+        "DB_USERNAME": "3SSdq1KBgVVEXVd.root",
+        "DB_PASSWORD": "<PASSWORD>",
+        "MYSQL_ATTR_SSL_CA": "ca.pem"
     }
 }
