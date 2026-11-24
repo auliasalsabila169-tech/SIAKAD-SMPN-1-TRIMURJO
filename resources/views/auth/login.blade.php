@@ -287,10 +287,15 @@
                     <span>DAFTAR AKUN BARU</span>
                 </a>
 
-                <div class="mt-4">
+                <div class="mt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
+                    <a href="{{ route('alur') }}" class="text-xs text-blue-600 dark:text-blue-400 hover:underline font-bold inline-flex items-center gap-1.5 transition">
+                        <span>📊</span>
+                        <span>Lihat Flowchart & Alur Kerja Sistem</span>
+                    </a>
+                    <span class="text-slate-300 dark:text-slate-700 hidden sm:inline">•</span>
                     <button type="button" onclick="alert('Ruang Administrasi SMPN 1 Trimurjo\nJam Pelayanan: Senin - Sabtu (07.00 - 14.00 WIB)\nKontak: Ruang Tata Usaha SMPN 1 Trimurjo\nKabupaten Lampung Tengah');" class="text-[11px] text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition inline-flex items-center gap-1 cursor-pointer">
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                        <span>Bantuan Sistem & Informasi Sekolah</span>
+                        <span>Bantuan & Info Sekolah</span>
                     </button>
                 </div>
             </div>

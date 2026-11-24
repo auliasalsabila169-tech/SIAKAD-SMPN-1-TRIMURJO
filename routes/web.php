@@ -15,6 +15,17 @@ Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('regi
 Route::post('/register', [AuthController::class, 'register'])->name('register.post');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+// Rute Publik: Flowchart & Panduan Alur Sistem (UTS Basis Data Lanjut)
+Route::get('/alur', function () {
+    return view('panduan.alur');
+})->name('alur');
+Route::get('/alur-siakad', function () {
+    return view('panduan.alur');
+});
+Route::get('/alur-siakad.html', function () {
+    return view('panduan.alur');
+});
+
 // 2. Rute Terlindungi (Wajib Login)
 Route::middleware(['auth'])->group(function () {
 
