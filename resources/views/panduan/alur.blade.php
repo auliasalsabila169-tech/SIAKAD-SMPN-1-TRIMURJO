@@ -63,12 +63,12 @@
         <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 text-center">
             <div class="p-2.5 rounded-xl bg-blue-50/60 border border-blue-100">
                 <div class="text-xs text-blue-600 font-bold uppercase tracking-wider">Siswa Terdaftar</div>
-                <div class="text-xl sm:text-2xl font-black text-blue-700 font-mono mt-0.5">34</div>
-                <div class="text-[10px] text-blue-500 font-semibold">100% Nilai Terisi</div>
+                <div class="text-xl sm:text-2xl font-black text-blue-700 font-mono mt-0.5">120</div>
+                <div class="text-[10px] text-blue-500 font-semibold">20 Siswa / Kelas</div>
             </div>
             <div class="p-2.5 rounded-xl bg-emerald-50/60 border border-emerald-100">
                 <div class="text-xs text-emerald-600 font-bold uppercase tracking-wider">Akun Pengguna</div>
-                <div class="text-xl sm:text-2xl font-black text-emerald-700 font-mono mt-0.5">45</div>
+                <div class="text-xl sm:text-2xl font-black text-emerald-700 font-mono mt-0.5">131</div>
                 <div class="text-[10px] text-emerald-500 font-semibold">Aktif & Terverifikasi</div>
             </div>
             <div class="p-2.5 rounded-xl bg-indigo-50/60 border border-indigo-100">
@@ -83,12 +83,12 @@
             </div>
             <div class="p-2.5 rounded-xl bg-purple-50/60 border border-purple-100">
                 <div class="text-xs text-purple-600 font-bold uppercase tracking-wider">Jadwal KBM</div>
-                <div class="text-xl sm:text-2xl font-black text-purple-700 font-mono mt-0.5">42</div>
-                <div class="text-[10px] text-purple-500 font-semibold">10 Mapel Terjadwal</div>
+                <div class="text-xl sm:text-2xl font-black text-purple-700 font-mono mt-0.5">60</div>
+                <div class="text-[10px] text-purple-500 font-semibold">Senin - Jumat Lengkap</div>
             </div>
             <div class="p-2.5 rounded-xl bg-rose-50/60 border border-rose-100">
                 <div class="text-xs text-rose-600 font-bold uppercase tracking-wider">Nilai Lengkap</div>
-                <div class="text-xl sm:text-2xl font-black text-rose-700 font-mono mt-0.5">248</div>
+                <div class="text-xl sm:text-2xl font-black text-rose-700 font-mono mt-0.5">1,200</div>
                 <div class="text-[10px] text-rose-500 font-semibold">100% Sah (ACC TU)</div>
             </div>
         </div>
@@ -97,6 +97,7 @@
     <!-- TAB NAVIGATOR -->
     <nav class="max-w-6xl mx-auto mb-6 sm:mb-8">
         <div class="flex items-center gap-2 overflow-x-auto pb-2 text-xs">
+            <button onclick="switchTab('jadwal')" id="tab-jadwal" class="tab-btn px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-600 whitespace-nowrap transition cursor-pointer flex items-center gap-2"><span>📅</span> <span>Jadwal KBM Senin-Jumat (6 Kelas)</span></button>
             <button onclick="switchTab('matrix')" id="tab-matrix" class="tab-btn active px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-600 whitespace-nowrap transition cursor-pointer flex items-center gap-2">
                 <span>⚖️</span> <span>Bagan Matriks Pengguna & Entitas</span>
             </button>
@@ -649,6 +650,643 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- TAB BARU: JADWAL KBM SENIN - JUMAT 6 ROMBEL KELAS -->
+        <section id="content-jadwal" class="tab-content hidden space-y-6">
+            <div class="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm">
+                
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-slate-100">
+                    <div>
+                        <h2 class="text-lg font-black text-slate-900 flex items-center gap-2">
+                            <span>📅</span> Jadwal Pelajaran KBM Rapi per Hari (Senin - Jumat)
+                        </h2>
+                        <p class="text-xs text-slate-500 mt-1">Disusun sistematis untuk 6 Rombel Kelas & 10 Guru Pengajar (Bebas Bentrok Jam)</p>
+                    </div>
+
+                    <!-- Filter Kelas Selector -->
+                    <div class="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs">
+                        <button onclick="switchKelasJadwal(7)" id="btn-kj-7" class="btn-kj active px-3 py-1.5 rounded-xl bg-blue-600 text-white font-bold transition">VII A (20 Siswa)</button>
+                        <button onclick="switchKelasJadwal(8)" id="btn-kj-8" class="btn-kj px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold transition">VII B (20 Siswa)</button>
+                        <button onclick="switchKelasJadwal(9)" id="btn-kj-9" class="btn-kj px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold transition">VIII A (20 Siswa)</button>
+                        <button onclick="switchKelasJadwal(10)" id="btn-kj-10" class="btn-kj px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold transition">VIII B (20 Siswa)</button>
+                        <button onclick="switchKelasJadwal(11)" id="btn-kj-11" class="btn-kj px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold transition">IX A (20 Siswa)</button>
+                        <button onclick="switchKelasJadwal(12)" id="btn-kj-12" class="btn-kj px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold transition">IX B (20 Siswa)</button>
+                    </div>
+                </div>
+
+                <!-- Kontainer Jadwal Per Kelas -->
+                <div class="mt-6">
+                    <div id="jadwal-kelas-7" class="jadwal-kelas-pane  space-y-4">
+  <div class="flex items-center justify-between p-4 rounded-2xl bg-slate-100 border border-slate-200">
+    <div>
+      <h3 class="font-black text-slate-900 text-sm">Jadwal KBM Mingguan: Kelas VII A</h3>
+      <p class="text-xs text-slate-500">20 Siswa Terdaftar &bull; Kurikulum Merdeka &bull; Semester Ganjil</p>
+    </div>
+    <span class="px-3 py-1 rounded-xl bg-blue-100 text-blue-800 text-xs font-bold font-mono">Senin s/d Jumat (10 Mapel)</span>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-5 gap-3.5">
+    <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div class="pb-2.5 mb-2.5 border-b border-slate-100 flex items-center justify-between">
+        <span class="font-black text-xs text-blue-700 uppercase tracking-wider">Senin</span>
+        <span class="text-[10px] text-slate-400 font-mono">2 Sesi KBM</span>
+      </div>
+      <div class="space-y-2.5">
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-blue-50 text-blue-700 border-blue-200 mb-1">Jam 1-2 (07:15 - 08:35)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Bahasa Indonesia</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Istri Sugiyatmi, S.Pd.</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-indigo-50 text-indigo-700 border-indigo-200 mb-1">Jam 3-4 (08:35 - 10:10)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Matematika</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Budi Santoso, S.Pd.</p>
+        </div>
+      </div>
+    </div>
+    <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div class="pb-2.5 mb-2.5 border-b border-slate-100 flex items-center justify-between">
+        <span class="font-black text-xs text-blue-700 uppercase tracking-wider">Selasa</span>
+        <span class="text-[10px] text-slate-400 font-mono">2 Sesi KBM</span>
+      </div>
+      <div class="space-y-2.5">
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-blue-50 text-blue-700 border-blue-200 mb-1">Jam 1-2 (07:15 - 08:35)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Bahasa Inggris</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Arya Pratama, S.Pd</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-indigo-50 text-indigo-700 border-indigo-200 mb-1">Jam 3-4 (08:35 - 10:10)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Ilmu Pengetahuan Alam (IPA)</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Drs. Hendro Wibowo, M.Pd.</p>
+        </div>
+      </div>
+    </div>
+    <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div class="pb-2.5 mb-2.5 border-b border-slate-100 flex items-center justify-between">
+        <span class="font-black text-xs text-blue-700 uppercase tracking-wider">Rabu</span>
+        <span class="text-[10px] text-slate-400 font-mono">2 Sesi KBM</span>
+      </div>
+      <div class="space-y-2.5">
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-blue-50 text-blue-700 border-blue-200 mb-1">Jam 1-2 (07:15 - 08:35)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Pendidikan Agama Islam</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Sri Wahyuni, S.Pd.</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-indigo-50 text-indigo-700 border-indigo-200 mb-1">Jam 3-4 (08:35 - 10:10)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Informatika & TIK</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Rahmat Hidayat, S.Kom., M.T.</p>
+        </div>
+      </div>
+    </div>
+    <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div class="pb-2.5 mb-2.5 border-b border-slate-100 flex items-center justify-between">
+        <span class="font-black text-xs text-blue-700 uppercase tracking-wider">Kamis</span>
+        <span class="text-[10px] text-slate-400 font-mono">2 Sesi KBM</span>
+      </div>
+      <div class="space-y-2.5">
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-blue-50 text-blue-700 border-blue-200 mb-1">Jam 1-2 (07:15 - 08:35)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Pendidikan Pancasila & Kewarganegaraan (PPKn)</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Dra. Hj. Siti Fatimah, M.Pd.</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-indigo-50 text-indigo-700 border-indigo-200 mb-1">Jam 3-4 (08:35 - 10:10)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Ilmu Pengetahuan Sosial (IPS)</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Agus Priyanto, S.Pd., M.M.</p>
+        </div>
+      </div>
+    </div>
+    <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div class="pb-2.5 mb-2.5 border-b border-slate-100 flex items-center justify-between">
+        <span class="font-black text-xs text-blue-700 uppercase tracking-wider">Jumat</span>
+        <span class="text-[10px] text-slate-400 font-mono">2 Sesi KBM</span>
+      </div>
+      <div class="space-y-2.5">
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-blue-50 text-blue-700 border-blue-200 mb-1">Jam 1-2 (07:15 - 08:35)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Seni Budaya & Prakarya</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Nurul Hidayati, S.Sn.</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-indigo-50 text-indigo-700 border-indigo-200 mb-1">Jam 3-4 (08:35 - 10:10)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Pendidikan Jasmani, Olahraga & Kesehatan</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Tri Wibisono, S.Pd.Jas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="jadwal-kelas-8" class="jadwal-kelas-pane hidden space-y-4">
+  <div class="flex items-center justify-between p-4 rounded-2xl bg-slate-100 border border-slate-200">
+    <div>
+      <h3 class="font-black text-slate-900 text-sm">Jadwal KBM Mingguan: Kelas VII B</h3>
+      <p class="text-xs text-slate-500">20 Siswa Terdaftar &bull; Kurikulum Merdeka &bull; Semester Ganjil</p>
+    </div>
+    <span class="px-3 py-1 rounded-xl bg-blue-100 text-blue-800 text-xs font-bold font-mono">Senin s/d Jumat (10 Mapel)</span>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-5 gap-3.5">
+    <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div class="pb-2.5 mb-2.5 border-b border-slate-100 flex items-center justify-between">
+        <span class="font-black text-xs text-blue-700 uppercase tracking-wider">Senin</span>
+        <span class="text-[10px] text-slate-400 font-mono">2 Sesi KBM</span>
+      </div>
+      <div class="space-y-2.5">
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-blue-50 text-blue-700 border-blue-200 mb-1">Jam 1-2 (07:15 - 08:35)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Pendidikan Jasmani, Olahraga & Kesehatan</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Tri Wibisono, S.Pd.Jas.</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-indigo-50 text-indigo-700 border-indigo-200 mb-1">Jam 3-4 (08:35 - 10:10)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Bahasa Indonesia</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Istri Sugiyatmi, S.Pd.</p>
+        </div>
+      </div>
+    </div>
+    <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div class="pb-2.5 mb-2.5 border-b border-slate-100 flex items-center justify-between">
+        <span class="font-black text-xs text-blue-700 uppercase tracking-wider">Selasa</span>
+        <span class="text-[10px] text-slate-400 font-mono">2 Sesi KBM</span>
+      </div>
+      <div class="space-y-2.5">
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-blue-50 text-blue-700 border-blue-200 mb-1">Jam 1-2 (07:15 - 08:35)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Matematika</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Budi Santoso, S.Pd.</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-indigo-50 text-indigo-700 border-indigo-200 mb-1">Jam 3-4 (08:35 - 10:10)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Bahasa Inggris</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Arya Pratama, S.Pd</p>
+        </div>
+      </div>
+    </div>
+    <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div class="pb-2.5 mb-2.5 border-b border-slate-100 flex items-center justify-between">
+        <span class="font-black text-xs text-blue-700 uppercase tracking-wider">Rabu</span>
+        <span class="text-[10px] text-slate-400 font-mono">2 Sesi KBM</span>
+      </div>
+      <div class="space-y-2.5">
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-blue-50 text-blue-700 border-blue-200 mb-1">Jam 1-2 (07:15 - 08:35)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Ilmu Pengetahuan Alam (IPA)</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Drs. Hendro Wibowo, M.Pd.</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-indigo-50 text-indigo-700 border-indigo-200 mb-1">Jam 3-4 (08:35 - 10:10)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Pendidikan Agama Islam</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Sri Wahyuni, S.Pd.</p>
+        </div>
+      </div>
+    </div>
+    <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div class="pb-2.5 mb-2.5 border-b border-slate-100 flex items-center justify-between">
+        <span class="font-black text-xs text-blue-700 uppercase tracking-wider">Kamis</span>
+        <span class="text-[10px] text-slate-400 font-mono">2 Sesi KBM</span>
+      </div>
+      <div class="space-y-2.5">
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-blue-50 text-blue-700 border-blue-200 mb-1">Jam 1-2 (07:15 - 08:35)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Informatika & TIK</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Rahmat Hidayat, S.Kom., M.T.</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-indigo-50 text-indigo-700 border-indigo-200 mb-1">Jam 3-4 (08:35 - 10:10)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Pendidikan Pancasila & Kewarganegaraan (PPKn)</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Dra. Hj. Siti Fatimah, M.Pd.</p>
+        </div>
+      </div>
+    </div>
+    <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div class="pb-2.5 mb-2.5 border-b border-slate-100 flex items-center justify-between">
+        <span class="font-black text-xs text-blue-700 uppercase tracking-wider">Jumat</span>
+        <span class="text-[10px] text-slate-400 font-mono">2 Sesi KBM</span>
+      </div>
+      <div class="space-y-2.5">
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-blue-50 text-blue-700 border-blue-200 mb-1">Jam 1-2 (07:15 - 08:35)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Ilmu Pengetahuan Sosial (IPS)</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Agus Priyanto, S.Pd., M.M.</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-indigo-50 text-indigo-700 border-indigo-200 mb-1">Jam 3-4 (08:35 - 10:10)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Seni Budaya & Prakarya</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Nurul Hidayati, S.Sn.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="jadwal-kelas-9" class="jadwal-kelas-pane hidden space-y-4">
+  <div class="flex items-center justify-between p-4 rounded-2xl bg-slate-100 border border-slate-200">
+    <div>
+      <h3 class="font-black text-slate-900 text-sm">Jadwal KBM Mingguan: Kelas VIII A</h3>
+      <p class="text-xs text-slate-500">20 Siswa Terdaftar &bull; Kurikulum Merdeka &bull; Semester Ganjil</p>
+    </div>
+    <span class="px-3 py-1 rounded-xl bg-blue-100 text-blue-800 text-xs font-bold font-mono">Senin s/d Jumat (10 Mapel)</span>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-5 gap-3.5">
+    <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div class="pb-2.5 mb-2.5 border-b border-slate-100 flex items-center justify-between">
+        <span class="font-black text-xs text-blue-700 uppercase tracking-wider">Senin</span>
+        <span class="text-[10px] text-slate-400 font-mono">2 Sesi KBM</span>
+      </div>
+      <div class="space-y-2.5">
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-blue-50 text-blue-700 border-blue-200 mb-1">Jam 1-2 (07:15 - 08:35)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Seni Budaya & Prakarya</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Nurul Hidayati, S.Sn.</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-indigo-50 text-indigo-700 border-indigo-200 mb-1">Jam 3-4 (08:35 - 10:10)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Pendidikan Jasmani, Olahraga & Kesehatan</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Tri Wibisono, S.Pd.Jas.</p>
+        </div>
+      </div>
+    </div>
+    <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div class="pb-2.5 mb-2.5 border-b border-slate-100 flex items-center justify-between">
+        <span class="font-black text-xs text-blue-700 uppercase tracking-wider">Selasa</span>
+        <span class="text-[10px] text-slate-400 font-mono">2 Sesi KBM</span>
+      </div>
+      <div class="space-y-2.5">
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-blue-50 text-blue-700 border-blue-200 mb-1">Jam 1-2 (07:15 - 08:35)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Bahasa Indonesia</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Istri Sugiyatmi, S.Pd.</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-indigo-50 text-indigo-700 border-indigo-200 mb-1">Jam 3-4 (08:35 - 10:10)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Matematika</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Budi Santoso, S.Pd.</p>
+        </div>
+      </div>
+    </div>
+    <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div class="pb-2.5 mb-2.5 border-b border-slate-100 flex items-center justify-between">
+        <span class="font-black text-xs text-blue-700 uppercase tracking-wider">Rabu</span>
+        <span class="text-[10px] text-slate-400 font-mono">2 Sesi KBM</span>
+      </div>
+      <div class="space-y-2.5">
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-blue-50 text-blue-700 border-blue-200 mb-1">Jam 1-2 (07:15 - 08:35)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Bahasa Inggris</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Arya Pratama, S.Pd</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-indigo-50 text-indigo-700 border-indigo-200 mb-1">Jam 3-4 (08:35 - 10:10)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Ilmu Pengetahuan Alam (IPA)</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Drs. Hendro Wibowo, M.Pd.</p>
+        </div>
+      </div>
+    </div>
+    <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div class="pb-2.5 mb-2.5 border-b border-slate-100 flex items-center justify-between">
+        <span class="font-black text-xs text-blue-700 uppercase tracking-wider">Kamis</span>
+        <span class="text-[10px] text-slate-400 font-mono">2 Sesi KBM</span>
+      </div>
+      <div class="space-y-2.5">
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-blue-50 text-blue-700 border-blue-200 mb-1">Jam 1-2 (07:15 - 08:35)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Pendidikan Agama Islam</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Sri Wahyuni, S.Pd.</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-indigo-50 text-indigo-700 border-indigo-200 mb-1">Jam 3-4 (08:35 - 10:10)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Informatika & TIK</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Rahmat Hidayat, S.Kom., M.T.</p>
+        </div>
+      </div>
+    </div>
+    <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div class="pb-2.5 mb-2.5 border-b border-slate-100 flex items-center justify-between">
+        <span class="font-black text-xs text-blue-700 uppercase tracking-wider">Jumat</span>
+        <span class="text-[10px] text-slate-400 font-mono">2 Sesi KBM</span>
+      </div>
+      <div class="space-y-2.5">
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-blue-50 text-blue-700 border-blue-200 mb-1">Jam 1-2 (07:15 - 08:35)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Pendidikan Pancasila & Kewarganegaraan (PPKn)</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Dra. Hj. Siti Fatimah, M.Pd.</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-indigo-50 text-indigo-700 border-indigo-200 mb-1">Jam 3-4 (08:35 - 10:10)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Ilmu Pengetahuan Sosial (IPS)</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Agus Priyanto, S.Pd., M.M.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="jadwal-kelas-10" class="jadwal-kelas-pane hidden space-y-4">
+  <div class="flex items-center justify-between p-4 rounded-2xl bg-slate-100 border border-slate-200">
+    <div>
+      <h3 class="font-black text-slate-900 text-sm">Jadwal KBM Mingguan: Kelas VIII B</h3>
+      <p class="text-xs text-slate-500">20 Siswa Terdaftar &bull; Kurikulum Merdeka &bull; Semester Ganjil</p>
+    </div>
+    <span class="px-3 py-1 rounded-xl bg-blue-100 text-blue-800 text-xs font-bold font-mono">Senin s/d Jumat (10 Mapel)</span>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-5 gap-3.5">
+    <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div class="pb-2.5 mb-2.5 border-b border-slate-100 flex items-center justify-between">
+        <span class="font-black text-xs text-blue-700 uppercase tracking-wider">Senin</span>
+        <span class="text-[10px] text-slate-400 font-mono">2 Sesi KBM</span>
+      </div>
+      <div class="space-y-2.5">
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-blue-50 text-blue-700 border-blue-200 mb-1">Jam 1-2 (07:15 - 08:35)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Ilmu Pengetahuan Sosial (IPS)</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Agus Priyanto, S.Pd., M.M.</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-indigo-50 text-indigo-700 border-indigo-200 mb-1">Jam 3-4 (08:35 - 10:10)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Seni Budaya & Prakarya</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Nurul Hidayati, S.Sn.</p>
+        </div>
+      </div>
+    </div>
+    <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div class="pb-2.5 mb-2.5 border-b border-slate-100 flex items-center justify-between">
+        <span class="font-black text-xs text-blue-700 uppercase tracking-wider">Selasa</span>
+        <span class="text-[10px] text-slate-400 font-mono">2 Sesi KBM</span>
+      </div>
+      <div class="space-y-2.5">
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-blue-50 text-blue-700 border-blue-200 mb-1">Jam 1-2 (07:15 - 08:35)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Pendidikan Jasmani, Olahraga & Kesehatan</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Tri Wibisono, S.Pd.Jas.</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-indigo-50 text-indigo-700 border-indigo-200 mb-1">Jam 3-4 (08:35 - 10:10)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Bahasa Indonesia</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Istri Sugiyatmi, S.Pd.</p>
+        </div>
+      </div>
+    </div>
+    <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div class="pb-2.5 mb-2.5 border-b border-slate-100 flex items-center justify-between">
+        <span class="font-black text-xs text-blue-700 uppercase tracking-wider">Rabu</span>
+        <span class="text-[10px] text-slate-400 font-mono">2 Sesi KBM</span>
+      </div>
+      <div class="space-y-2.5">
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-blue-50 text-blue-700 border-blue-200 mb-1">Jam 1-2 (07:15 - 08:35)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Matematika</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Budi Santoso, S.Pd.</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-indigo-50 text-indigo-700 border-indigo-200 mb-1">Jam 3-4 (08:35 - 10:10)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Bahasa Inggris</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Arya Pratama, S.Pd</p>
+        </div>
+      </div>
+    </div>
+    <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div class="pb-2.5 mb-2.5 border-b border-slate-100 flex items-center justify-between">
+        <span class="font-black text-xs text-blue-700 uppercase tracking-wider">Kamis</span>
+        <span class="text-[10px] text-slate-400 font-mono">2 Sesi KBM</span>
+      </div>
+      <div class="space-y-2.5">
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-blue-50 text-blue-700 border-blue-200 mb-1">Jam 1-2 (07:15 - 08:35)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Ilmu Pengetahuan Alam (IPA)</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Drs. Hendro Wibowo, M.Pd.</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-indigo-50 text-indigo-700 border-indigo-200 mb-1">Jam 3-4 (08:35 - 10:10)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Pendidikan Agama Islam</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Sri Wahyuni, S.Pd.</p>
+        </div>
+      </div>
+    </div>
+    <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div class="pb-2.5 mb-2.5 border-b border-slate-100 flex items-center justify-between">
+        <span class="font-black text-xs text-blue-700 uppercase tracking-wider">Jumat</span>
+        <span class="text-[10px] text-slate-400 font-mono">2 Sesi KBM</span>
+      </div>
+      <div class="space-y-2.5">
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-blue-50 text-blue-700 border-blue-200 mb-1">Jam 1-2 (07:15 - 08:35)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Informatika & TIK</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Rahmat Hidayat, S.Kom., M.T.</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-indigo-50 text-indigo-700 border-indigo-200 mb-1">Jam 3-4 (08:35 - 10:10)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Pendidikan Pancasila & Kewarganegaraan (PPKn)</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Dra. Hj. Siti Fatimah, M.Pd.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="jadwal-kelas-11" class="jadwal-kelas-pane hidden space-y-4">
+  <div class="flex items-center justify-between p-4 rounded-2xl bg-slate-100 border border-slate-200">
+    <div>
+      <h3 class="font-black text-slate-900 text-sm">Jadwal KBM Mingguan: Kelas IX A</h3>
+      <p class="text-xs text-slate-500">20 Siswa Terdaftar &bull; Kurikulum Merdeka &bull; Semester Ganjil</p>
+    </div>
+    <span class="px-3 py-1 rounded-xl bg-blue-100 text-blue-800 text-xs font-bold font-mono">Senin s/d Jumat (10 Mapel)</span>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-5 gap-3.5">
+    <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div class="pb-2.5 mb-2.5 border-b border-slate-100 flex items-center justify-between">
+        <span class="font-black text-xs text-blue-700 uppercase tracking-wider">Senin</span>
+        <span class="text-[10px] text-slate-400 font-mono">2 Sesi KBM</span>
+      </div>
+      <div class="space-y-2.5">
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-blue-50 text-blue-700 border-blue-200 mb-1">Jam 1-2 (07:15 - 08:35)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Pendidikan Pancasila & Kewarganegaraan (PPKn)</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Dra. Hj. Siti Fatimah, M.Pd.</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-indigo-50 text-indigo-700 border-indigo-200 mb-1">Jam 3-4 (08:35 - 10:10)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Ilmu Pengetahuan Sosial (IPS)</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Agus Priyanto, S.Pd., M.M.</p>
+        </div>
+      </div>
+    </div>
+    <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div class="pb-2.5 mb-2.5 border-b border-slate-100 flex items-center justify-between">
+        <span class="font-black text-xs text-blue-700 uppercase tracking-wider">Selasa</span>
+        <span class="text-[10px] text-slate-400 font-mono">2 Sesi KBM</span>
+      </div>
+      <div class="space-y-2.5">
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-blue-50 text-blue-700 border-blue-200 mb-1">Jam 1-2 (07:15 - 08:35)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Seni Budaya & Prakarya</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Nurul Hidayati, S.Sn.</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-indigo-50 text-indigo-700 border-indigo-200 mb-1">Jam 3-4 (08:35 - 10:10)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Pendidikan Jasmani, Olahraga & Kesehatan</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Tri Wibisono, S.Pd.Jas.</p>
+        </div>
+      </div>
+    </div>
+    <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div class="pb-2.5 mb-2.5 border-b border-slate-100 flex items-center justify-between">
+        <span class="font-black text-xs text-blue-700 uppercase tracking-wider">Rabu</span>
+        <span class="text-[10px] text-slate-400 font-mono">2 Sesi KBM</span>
+      </div>
+      <div class="space-y-2.5">
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-blue-50 text-blue-700 border-blue-200 mb-1">Jam 1-2 (07:15 - 08:35)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Bahasa Indonesia</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Istri Sugiyatmi, S.Pd.</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-indigo-50 text-indigo-700 border-indigo-200 mb-1">Jam 3-4 (08:35 - 10:10)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Matematika</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Budi Santoso, S.Pd.</p>
+        </div>
+      </div>
+    </div>
+    <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div class="pb-2.5 mb-2.5 border-b border-slate-100 flex items-center justify-between">
+        <span class="font-black text-xs text-blue-700 uppercase tracking-wider">Kamis</span>
+        <span class="text-[10px] text-slate-400 font-mono">2 Sesi KBM</span>
+      </div>
+      <div class="space-y-2.5">
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-blue-50 text-blue-700 border-blue-200 mb-1">Jam 1-2 (07:15 - 08:35)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Bahasa Inggris</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Arya Pratama, S.Pd</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-indigo-50 text-indigo-700 border-indigo-200 mb-1">Jam 3-4 (08:35 - 10:10)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Ilmu Pengetahuan Alam (IPA)</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Drs. Hendro Wibowo, M.Pd.</p>
+        </div>
+      </div>
+    </div>
+    <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div class="pb-2.5 mb-2.5 border-b border-slate-100 flex items-center justify-between">
+        <span class="font-black text-xs text-blue-700 uppercase tracking-wider">Jumat</span>
+        <span class="text-[10px] text-slate-400 font-mono">2 Sesi KBM</span>
+      </div>
+      <div class="space-y-2.5">
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-blue-50 text-blue-700 border-blue-200 mb-1">Jam 1-2 (07:15 - 08:35)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Pendidikan Agama Islam</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Sri Wahyuni, S.Pd.</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-indigo-50 text-indigo-700 border-indigo-200 mb-1">Jam 3-4 (08:35 - 10:10)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Informatika & TIK</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Rahmat Hidayat, S.Kom., M.T.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="jadwal-kelas-12" class="jadwal-kelas-pane hidden space-y-4">
+  <div class="flex items-center justify-between p-4 rounded-2xl bg-slate-100 border border-slate-200">
+    <div>
+      <h3 class="font-black text-slate-900 text-sm">Jadwal KBM Mingguan: Kelas IX B</h3>
+      <p class="text-xs text-slate-500">20 Siswa Terdaftar &bull; Kurikulum Merdeka &bull; Semester Ganjil</p>
+    </div>
+    <span class="px-3 py-1 rounded-xl bg-blue-100 text-blue-800 text-xs font-bold font-mono">Senin s/d Jumat (10 Mapel)</span>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-5 gap-3.5">
+    <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div class="pb-2.5 mb-2.5 border-b border-slate-100 flex items-center justify-between">
+        <span class="font-black text-xs text-blue-700 uppercase tracking-wider">Senin</span>
+        <span class="text-[10px] text-slate-400 font-mono">2 Sesi KBM</span>
+      </div>
+      <div class="space-y-2.5">
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-blue-50 text-blue-700 border-blue-200 mb-1">Jam 1-2 (07:15 - 08:35)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Informatika & TIK</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Rahmat Hidayat, S.Kom., M.T.</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-indigo-50 text-indigo-700 border-indigo-200 mb-1">Jam 3-4 (08:35 - 10:10)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Pendidikan Pancasila & Kewarganegaraan (PPKn)</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Dra. Hj. Siti Fatimah, M.Pd.</p>
+        </div>
+      </div>
+    </div>
+    <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div class="pb-2.5 mb-2.5 border-b border-slate-100 flex items-center justify-between">
+        <span class="font-black text-xs text-blue-700 uppercase tracking-wider">Selasa</span>
+        <span class="text-[10px] text-slate-400 font-mono">2 Sesi KBM</span>
+      </div>
+      <div class="space-y-2.5">
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-blue-50 text-blue-700 border-blue-200 mb-1">Jam 1-2 (07:15 - 08:35)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Ilmu Pengetahuan Sosial (IPS)</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Agus Priyanto, S.Pd., M.M.</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-indigo-50 text-indigo-700 border-indigo-200 mb-1">Jam 3-4 (08:35 - 10:10)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Seni Budaya & Prakarya</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Nurul Hidayati, S.Sn.</p>
+        </div>
+      </div>
+    </div>
+    <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div class="pb-2.5 mb-2.5 border-b border-slate-100 flex items-center justify-between">
+        <span class="font-black text-xs text-blue-700 uppercase tracking-wider">Rabu</span>
+        <span class="text-[10px] text-slate-400 font-mono">2 Sesi KBM</span>
+      </div>
+      <div class="space-y-2.5">
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-blue-50 text-blue-700 border-blue-200 mb-1">Jam 1-2 (07:15 - 08:35)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Pendidikan Jasmani, Olahraga & Kesehatan</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Tri Wibisono, S.Pd.Jas.</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-indigo-50 text-indigo-700 border-indigo-200 mb-1">Jam 3-4 (08:35 - 10:10)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Bahasa Indonesia</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Istri Sugiyatmi, S.Pd.</p>
+        </div>
+      </div>
+    </div>
+    <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div class="pb-2.5 mb-2.5 border-b border-slate-100 flex items-center justify-between">
+        <span class="font-black text-xs text-blue-700 uppercase tracking-wider">Kamis</span>
+        <span class="text-[10px] text-slate-400 font-mono">2 Sesi KBM</span>
+      </div>
+      <div class="space-y-2.5">
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-blue-50 text-blue-700 border-blue-200 mb-1">Jam 1-2 (07:15 - 08:35)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Matematika</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Budi Santoso, S.Pd.</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-indigo-50 text-indigo-700 border-indigo-200 mb-1">Jam 3-4 (08:35 - 10:10)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Bahasa Inggris</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Arya Pratama, S.Pd</p>
+        </div>
+      </div>
+    </div>
+    <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div class="pb-2.5 mb-2.5 border-b border-slate-100 flex items-center justify-between">
+        <span class="font-black text-xs text-blue-700 uppercase tracking-wider">Jumat</span>
+        <span class="text-[10px] text-slate-400 font-mono">2 Sesi KBM</span>
+      </div>
+      <div class="space-y-2.5">
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-blue-50 text-blue-700 border-blue-200 mb-1">Jam 1-2 (07:15 - 08:35)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Ilmu Pengetahuan Alam (IPA)</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Drs. Hendro Wibowo, M.Pd.</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold font-mono border bg-indigo-50 text-indigo-700 border-indigo-200 mb-1">Jam 3-4 (08:35 - 10:10)</span>
+          <h5 class="font-bold text-xs text-slate-900 leading-tight mb-0.5">Pendidikan Agama Islam</h5>
+          <p class="text-[11px] text-slate-500 font-medium truncate">Sri Wahyuni, S.Pd.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+                </div>
+
             </div>
         </section>
 
