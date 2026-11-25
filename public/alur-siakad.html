@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flowchart & Alur Kerja - SIAKAD SMPN 1 Trimurjo</title>
+    <title>Flowchart & Bagan Matriks Entitas - SIAKAD SMPN 1 Trimurjo</title>
     <link rel="icon" type="image/png" href="/images/logo-sekolah.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,10 +41,10 @@
             </div>
             <div>
                 <div class="flex items-center gap-2">
-                    <h1 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Flowchart & Alur Kerja SIAKAD</h1>
+                    <h1 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Bagan Matriks & Alur Entitas SIAKAD</h1>
                     <span class="px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 text-[10px] font-black uppercase">Resmi</span>
                 </div>
-                <p class="text-xs text-slate-500 font-medium">SMP Negeri 1 Trimurjo • Tugas UTS Basis Data Lanjut</p>
+                <p class="text-xs text-slate-500 font-medium">SMP Negeri 1 Trimurjo • Tugas UTS Basis Data Lanjut (34 Siswa, 6 Guru, 58 Nilai)</p>
             </div>
         </div>
 
@@ -58,10 +58,49 @@
         </div>
     </header>
 
+    <!-- STATISTIK DATA BASIS DATA SAAT INI (30+ DATA DUMMY BARU) -->
+    <section class="max-w-6xl mx-auto mb-6">
+        <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 text-center">
+            <div class="p-2.5 rounded-xl bg-blue-50/60 border border-blue-100">
+                <div class="text-xs text-blue-600 font-bold uppercase tracking-wider">Siswa Terdaftar</div>
+                <div class="text-xl sm:text-2xl font-black text-blue-700 font-mono mt-0.5">34</div>
+                <div class="text-[10px] text-blue-500 font-semibold">+30 Data Baru</div>
+            </div>
+            <div class="p-2.5 rounded-xl bg-emerald-50/60 border border-emerald-100">
+                <div class="text-xs text-emerald-600 font-bold uppercase tracking-wider">Akun Pengguna</div>
+                <div class="text-xl sm:text-2xl font-black text-emerald-700 font-mono mt-0.5">41</div>
+                <div class="text-[10px] text-emerald-500 font-semibold">+33 Akun Baru</div>
+            </div>
+            <div class="p-2.5 rounded-xl bg-indigo-50/60 border border-indigo-100">
+                <div class="text-xs text-indigo-600 font-bold uppercase tracking-wider">Guru & Walas</div>
+                <div class="text-xl sm:text-2xl font-black text-indigo-700 font-mono mt-0.5">6</div>
+                <div class="text-[10px] text-indigo-500 font-semibold">+3 Walas Baru</div>
+            </div>
+            <div class="p-2.5 rounded-xl bg-amber-50/60 border border-amber-100">
+                <div class="text-xs text-amber-600 font-bold uppercase tracking-wider">Rombel Kelas</div>
+                <div class="text-xl sm:text-2xl font-black text-amber-700 font-mono mt-0.5">6</div>
+                <div class="text-[10px] text-amber-500 font-semibold">VII A - IX B</div>
+            </div>
+            <div class="p-2.5 rounded-xl bg-purple-50/60 border border-purple-100">
+                <div class="text-xs text-purple-600 font-bold uppercase tracking-wider">Jadwal KBM</div>
+                <div class="text-xl sm:text-2xl font-black text-purple-700 font-mono mt-0.5">8</div>
+                <div class="text-[10px] text-purple-500 font-semibold">Mapel Terjadwal</div>
+            </div>
+            <div class="p-2.5 rounded-xl bg-rose-50/60 border border-rose-100">
+                <div class="text-xs text-rose-600 font-bold uppercase tracking-wider">Nilai Masuk</div>
+                <div class="text-xl sm:text-2xl font-black text-rose-700 font-mono mt-0.5">58</div>
+                <div class="text-[10px] text-rose-500 font-semibold">+53 Nilai Baru</div>
+            </div>
+        </div>
+    </section>
+
     <!-- TAB NAVIGATOR -->
     <nav class="max-w-6xl mx-auto mb-6 sm:mb-8">
         <div class="flex items-center gap-2 overflow-x-auto pb-2 text-xs">
-            <button onclick="switchTab('all')" id="tab-all" class="tab-btn active px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-600 whitespace-nowrap transition cursor-pointer flex items-center gap-2">
+            <button onclick="switchTab('matrix')" id="tab-matrix" class="tab-btn active px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-600 whitespace-nowrap transition cursor-pointer flex items-center gap-2">
+                <span>⚖️</span> <span>Bagan Matriks Pengguna & Entitas</span>
+            </button>
+            <button onclick="switchTab('all')" id="tab-all" class="tab-btn px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-600 whitespace-nowrap transition cursor-pointer flex items-center gap-2">
                 <span>🌐</span> <span>Alur Menyeluruh (End-to-End)</span>
             </button>
             <button onclick="switchTab('tu')" id="tab-tu" class="tab-btn px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-600 whitespace-nowrap transition cursor-pointer flex items-center gap-2">
@@ -76,17 +115,289 @@
             <button onclick="switchTab('siswa')" id="tab-siswa" class="tab-btn px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-600 whitespace-nowrap transition cursor-pointer flex items-center gap-2">
                 <span>🎓</span> <span>Siswa</span>
             </button>
-            <button onclick="switchTab('matrix')" id="tab-matrix" class="tab-btn px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-600 whitespace-nowrap transition cursor-pointer flex items-center gap-2">
-                <span>⚖️</span> <span>Matriks Hak Akses (RBAC)</span>
-            </button>
         </div>
     </nav>
 
     <!-- MAIN BODY -->
     <main class="max-w-6xl mx-auto space-y-6">
 
-        <!-- 1. TAB: ALUR MENYELURUH -->
-        <section id="content-all" class="tab-content space-y-6">
+        <!-- 1. TAB UTAMA: BAGAN MATRIKS PENGGUNA & ENTITAS -->
+        <section id="content-matrix" class="tab-content space-y-6">
+            
+            <!-- BAGAN VISUAL MATRIKS ENTITAS PER PENGGUNA -->
+            <div class="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm">
+                <div class="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100">
+                    <div>
+                        <h2 class="text-lg font-black text-slate-900 flex items-center gap-2">
+                            <span>📊</span> Bagan Matriks Hak Akses CRUD Entitas Basis Data
+                        </h2>
+                        <p class="text-xs text-slate-500 mt-1">Pemetaan relasi wewenang Create (C), Read (R), Update (U), Delete (D) untuk setiap peran pengguna</p>
+                    </div>
+                    <div class="flex items-center gap-2 text-[11px] font-bold">
+                        <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-200">C = Create</span>
+                        <span class="px-2 py-0.5 rounded bg-blue-100 text-blue-800 border border-blue-200">R = Read</span>
+                        <span class="px-2 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-200">U = Update</span>
+                        <span class="px-2 py-0.5 rounded bg-rose-100 text-rose-800 border border-rose-200">D = Delete</span>
+                    </div>
+                </div>
+
+                <!-- 4 KARTU BAGAN PENGGUNA TERHADAP ENTITAS -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
+                    
+                    <!-- Bagan 1: Tata Usaha (Admin) -->
+                    <div class="p-5 rounded-2xl bg-blue-50/60 border border-blue-200 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between pb-3 mb-3 border-b border-blue-200">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="text-xl">🏛️</span>
+                                    <div>
+                                        <h3 class="font-extrabold text-sm text-slate-900">Entitas Pengguna: Tata Usaha (TU)</h3>
+                                        <span class="text-[10px] font-mono text-blue-700 font-semibold">Wewenang: Administrator Penuh</span>
+                                    </div>
+                                </div>
+                                <span class="px-2.5 py-0.5 rounded-full bg-blue-600 text-white text-[10px] font-black uppercase">Full Admin</span>
+                            </div>
+
+                            <p class="text-xs text-slate-600 mb-3">Hubungan TU dengan Entitas Basis Data:</p>
+
+                            <div class="space-y-1.5 text-xs">
+                                <div class="p-2 rounded-xl bg-white border border-blue-100 flex items-center justify-between">
+                                    <span class="font-semibold text-slate-800">1. Entitas Siswa (<code class="font-mono text-blue-600">siswas</code>)</span>
+                                    <span class="font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">C, R, U, D</span>
+                                </div>
+                                <div class="p-2 rounded-xl bg-white border border-blue-100 flex items-center justify-between">
+                                    <span class="font-semibold text-slate-800">2. Entitas Guru (<code class="font-mono text-blue-600">guru</code>)</span>
+                                    <span class="font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">C, R, U, D</span>
+                                </div>
+                                <div class="p-2 rounded-xl bg-white border border-blue-100 flex items-center justify-between">
+                                    <span class="font-semibold text-slate-800">3. Entitas Rombel (<code class="font-mono text-blue-600">kelas</code>)</span>
+                                    <span class="font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">C, R, U, D</span>
+                                </div>
+                                <div class="p-2 rounded-xl bg-white border border-blue-100 flex items-center justify-between">
+                                    <span class="font-semibold text-slate-800">4. Entitas Jadwal (<code class="font-mono text-blue-600">jadwal</code>)</span>
+                                    <span class="font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">C, R, U, D</span>
+                                </div>
+                                <div class="p-2 rounded-xl bg-white border border-blue-100 flex items-center justify-between">
+                                    <span class="font-semibold text-slate-800">5. Entitas Nilai (<code class="font-mono text-blue-600">nilais</code>)</span>
+                                    <span class="font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">R, U (ACC/Sahkan)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bagan 2: Guru Mata Pelajaran -->
+                    <div class="p-5 rounded-2xl bg-emerald-50/60 border border-emerald-200 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between pb-3 mb-3 border-b border-emerald-200">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="text-xl">👨‍🏫</span>
+                                    <div>
+                                        <h3 class="font-extrabold text-sm text-slate-900">Entitas Pengguna: Guru Mapel</h3>
+                                        <span class="text-[10px] font-mono text-emerald-700 font-semibold">Wewenang: KBM & Penilaian</span>
+                                    </div>
+                                </div>
+                                <span class="px-2.5 py-0.5 rounded-full bg-emerald-600 text-white text-[10px] font-black uppercase">Pendidik</span>
+                            </div>
+
+                            <p class="text-xs text-slate-600 mb-3">Hubungan Guru Mapel dengan Entitas Basis Data:</p>
+
+                            <div class="space-y-1.5 text-xs">
+                                <div class="p-2 rounded-xl bg-white border border-emerald-100 flex items-center justify-between">
+                                    <span class="font-semibold text-slate-800">1. Entitas Jadwal (<code class="font-mono text-emerald-600">jadwal</code>)</span>
+                                    <span class="font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">R (Jadwal Sendiri)</span>
+                                </div>
+                                <div class="p-2 rounded-xl bg-white border border-emerald-100 flex items-center justify-between">
+                                    <span class="font-semibold text-slate-800">2. Entitas Nilai (<code class="font-mono text-emerald-600">nilais</code>)</span>
+                                    <span class="font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">C, R, U (Mapel Diampu)</span>
+                                </div>
+                                <div class="p-2 rounded-xl bg-white border border-emerald-100 flex items-center justify-between">
+                                    <span class="font-semibold text-slate-800">3. Entitas Siswa (<code class="font-mono text-emerald-600">siswas</code>)</span>
+                                    <span class="font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">R (Siswa yang Diajar)</span>
+                                </div>
+                                <div class="p-2 rounded-xl bg-white border border-emerald-100 flex items-center justify-between">
+                                    <span class="font-semibold text-slate-800">4. Entitas Rombel (<code class="font-mono text-emerald-600">kelas</code>)</span>
+                                    <span class="font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">R (Kelas Mengajar)</span>
+                                </div>
+                                <div class="p-2 rounded-xl bg-white border border-emerald-100 flex items-center justify-between">
+                                    <span class="font-semibold text-slate-800">5. Master Data Induk</span>
+                                    <span class="font-mono font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded">Tidak Ada Akses</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bagan 3: Wali Kelas -->
+                    <div class="p-5 rounded-2xl bg-indigo-50/60 border border-indigo-200 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between pb-3 mb-3 border-b border-indigo-200">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="text-xl">📋</span>
+                                    <div>
+                                        <h3 class="font-extrabold text-sm text-slate-900">Entitas Pengguna: Wali Kelas</h3>
+                                        <span class="text-[10px] font-mono text-indigo-700 font-semibold">Wewenang: Koordinator Kelas</span>
+                                    </div>
+                                </div>
+                                <span class="px-2.5 py-0.5 rounded-full bg-indigo-600 text-white text-[10px] font-black uppercase">Walas</span>
+                            </div>
+
+                            <p class="text-xs text-slate-600 mb-3">Hubungan Wali Kelas dengan Entitas Basis Data:</p>
+
+                            <div class="space-y-1.5 text-xs">
+                                <div class="p-2 rounded-xl bg-white border border-indigo-100 flex items-center justify-between">
+                                    <span class="font-semibold text-slate-800">1. Entitas Rombel (<code class="font-mono text-indigo-600">kelas</code>)</span>
+                                    <span class="font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">R (Kelas Binaan Sendiri)</span>
+                                </div>
+                                <div class="p-2 rounded-xl bg-white border border-indigo-100 flex items-center justify-between">
+                                    <span class="font-semibold text-slate-800">2. Entitas Nilai (<code class="font-mono text-indigo-600">nilais</code>)</span>
+                                    <span class="font-mono font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded">R (Rekap Leger Kelas)</span>
+                                </div>
+                                <div class="p-2 rounded-xl bg-white border border-indigo-100 flex items-center justify-between">
+                                    <span class="font-semibold text-slate-800">3. Entitas Siswa (<code class="font-mono text-indigo-600">siswas</code>)</span>
+                                    <span class="font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">R (Siswa Kelas Binaan)</span>
+                                </div>
+                                <div class="p-2 rounded-xl bg-white border border-indigo-100 flex items-center justify-between">
+                                    <span class="font-semibold text-slate-800">4. Entitas Jadwal (<code class="font-mono text-indigo-600">jadwal</code>)</span>
+                                    <span class="font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">R (Jadwal KBM Kelas)</span>
+                                </div>
+                                <div class="p-2 rounded-xl bg-white border border-indigo-100 flex items-center justify-between">
+                                    <span class="font-semibold text-slate-800">5. Cetak Leger Resmi</span>
+                                    <span class="font-mono font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded">Eksport & Cetak</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bagan 4: Siswa -->
+                    <div class="p-5 rounded-2xl bg-amber-50/60 border border-amber-200 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between pb-3 mb-3 border-b border-amber-200">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="text-xl">🎓</span>
+                                    <div>
+                                        <h3 class="font-extrabold text-sm text-slate-900">Entitas Pengguna: Siswa</h3>
+                                        <span class="text-[10px] font-mono text-amber-700 font-semibold">Wewenang: Peserta Didik</span>
+                                    </div>
+                                </div>
+                                <span class="px-2.5 py-0.5 rounded-full bg-amber-600 text-white text-[10px] font-black uppercase">Siswa</span>
+                            </div>
+
+                            <p class="text-xs text-slate-600 mb-3">Hubungan Siswa dengan Entitas Basis Data:</p>
+
+                            <div class="space-y-1.5 text-xs">
+                                <div class="p-2 rounded-xl bg-white border border-amber-100 flex items-center justify-between">
+                                    <span class="font-semibold text-slate-800">1. Entitas Nilai (<code class="font-mono text-amber-600">nilais</code>)</span>
+                                    <span class="font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">R (Nilai Diri Sendiri)</span>
+                                </div>
+                                <div class="p-2 rounded-xl bg-white border border-amber-100 flex items-center justify-between">
+                                    <span class="font-semibold text-slate-800">2. Entitas Jadwal (<code class="font-mono text-amber-600">jadwal</code>)</span>
+                                    <span class="font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">R (Jadwal Kelas Sendiri)</span>
+                                </div>
+                                <div class="p-2 rounded-xl bg-white border border-amber-100 flex items-center justify-between">
+                                    <span class="font-semibold text-slate-800">3. Entitas Profil (<code class="font-mono text-amber-600">siswas</code>)</span>
+                                    <span class="font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">R (Biodata Pribadi)</span>
+                                </div>
+                                <div class="p-2 rounded-xl bg-white border border-amber-100 flex items-center justify-between">
+                                    <span class="font-semibold text-slate-800">4. Entitas Nilai Teman</span>
+                                    <span class="font-mono font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded">Dibatasi Privasi (❌)</span>
+                                </div>
+                                <div class="p-2 rounded-xl bg-white border border-amber-100 flex items-center justify-between">
+                                    <span class="font-semibold text-slate-800">5. Input / Edit Data</span>
+                                    <span class="font-mono font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded">Read-Only</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- TABEL MATRIKS CRUD LENGKAP -->
+                <div class="overflow-x-auto">
+                    <h3 class="text-sm font-extrabold text-slate-900 mb-3 flex items-center gap-2">
+                        <span>📋</span> Tabel Matriks Entitas vs Peran (CRUD RBAC)
+                    </h3>
+                    <table class="w-full text-left text-xs border-collapse">
+                        <thead>
+                            <tr class="bg-slate-100 text-slate-700 uppercase font-mono text-[11px]">
+                                <th class="py-3.5 px-4 rounded-l-xl">Tabel / Entitas Basis Data</th>
+                                <th class="py-3.5 px-3 text-center">Tata Usaha (TU)</th>
+                                <th class="py-3.5 px-3 text-center">Guru Mapel</th>
+                                <th class="py-3.5 px-3 text-center">Wali Kelas</th>
+                                <th class="py-3.5 px-3 text-center rounded-r-xl">Siswa</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 text-slate-700">
+                            <tr class="hover:bg-slate-50">
+                                <td class="py-3 px-4 font-bold text-slate-900">
+                                    <code>users</code> (Akun & Autentikasi)
+                                </td>
+                                <td class="py-3 px-3 text-center font-bold text-emerald-700 bg-emerald-50/40">C, R, U, D</td>
+                                <td class="py-3 px-3 text-center text-slate-500">R, U (Akun Sendiri)</td>
+                                <td class="py-3 px-3 text-center text-slate-500">R, U (Akun Sendiri)</td>
+                                <td class="py-3 px-3 text-center text-slate-500">R, U (Akun Sendiri)</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="py-3 px-4 font-bold text-slate-900">
+                                    <code>guru</code> (Biodata Pendidik)
+                                </td>
+                                <td class="py-3 px-3 text-center font-bold text-emerald-700 bg-emerald-50/40">C, R, U, D</td>
+                                <td class="py-3 px-3 text-center text-blue-700 font-semibold">R (Profil Sendiri)</td>
+                                <td class="py-3 px-3 text-center text-blue-700 font-semibold">R (Profil Sendiri)</td>
+                                <td class="py-3 px-3 text-center text-blue-700">R (Nama Guru Pengajar)</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="py-3 px-4 font-bold text-slate-900">
+                                    <code>siswas</code> (Buku Induk Siswa)
+                                </td>
+                                <td class="py-3 px-3 text-center font-bold text-emerald-700 bg-emerald-50/40">C, R, U, D</td>
+                                <td class="py-3 px-3 text-center text-blue-700 font-semibold">R (Siswa Rombel KBM)</td>
+                                <td class="py-3 px-3 text-center text-blue-700 font-semibold">R (Siswa Kelas Binaan)</td>
+                                <td class="py-3 px-3 text-center text-blue-700">R (Biodata Pribadi)</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="py-3 px-4 font-bold text-slate-900">
+                                    <code>kelas</code> (Rombongan Belajar)
+                                </td>
+                                <td class="py-3 px-3 text-center font-bold text-emerald-700 bg-emerald-50/40">C, R, U, D</td>
+                                <td class="py-3 px-3 text-center text-blue-700">R (Daftar Kelas Ajar)</td>
+                                <td class="py-3 px-3 text-center text-indigo-700 font-bold">R (Kelas Binaan)</td>
+                                <td class="py-3 px-3 text-center text-blue-700">R (Kelas Sendiri)</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="py-3 px-4 font-bold text-slate-900">
+                                    <code>mata_pelajaran</code> (Kurikulum)
+                                </td>
+                                <td class="py-3 px-3 text-center font-bold text-emerald-700 bg-emerald-50/40">C, R, U, D</td>
+                                <td class="py-3 px-3 text-center text-blue-700">R</td>
+                                <td class="py-3 px-3 text-center text-blue-700">R</td>
+                                <td class="py-3 px-3 text-center text-blue-700">R</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="py-3 px-4 font-bold text-slate-900">
+                                    <code>jadwal</code> (Jadwal KBM Mingguan)
+                                </td>
+                                <td class="py-3 px-3 text-center font-bold text-emerald-700 bg-emerald-50/40">C, R, U, D</td>
+                                <td class="py-3 px-3 text-center text-emerald-700 font-bold">R (Jadwal Mengajar)</td>
+                                <td class="py-3 px-3 text-center text-indigo-700 font-bold">R (Jadwal Binaan)</td>
+                                <td class="py-3 px-3 text-center text-amber-700 font-bold">R (Jadwal Belajar)</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="py-3 px-4 font-bold text-slate-900">
+                                    <code>nilais</code> (Pengetahuan, Sikap, dsb)
+                                </td>
+                                <td class="py-3 px-3 text-center font-bold text-blue-700 bg-blue-50/40">R, U (ACC Final)</td>
+                                <td class="py-3 px-3 text-center font-bold text-emerald-700 bg-emerald-50/40">C, R, U (Mapel Diampu)</td>
+                                <td class="py-3 px-3 text-center font-bold text-indigo-700 bg-indigo-50/40">R (Rekap Leger Kelas)</td>
+                                <td class="py-3 px-3 text-center font-bold text-amber-700 bg-amber-50/40">R (Rapor Sendiri)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 2. TAB: ALUR MENYELURUH -->
+        <section id="content-all" class="tab-content hidden space-y-6">
             <div class="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm">
                 <div class="mb-6">
                     <h2 class="text-lg font-extrabold text-slate-900 flex items-center gap-2">
@@ -173,7 +484,7 @@
             </div>
         </section>
 
-        <!-- 2. TAB: TATA USAHA -->
+        <!-- 3. TAB: TATA USAHA -->
         <section id="content-tu" class="tab-content hidden space-y-6">
             <div class="p-6 sm:p-8 rounded-3xl bg-white border border-blue-200 shadow-sm">
                 <div class="flex items-center gap-3.5 mb-6 pb-4 border-b border-slate-100">
@@ -215,7 +526,7 @@
             </div>
         </section>
 
-        <!-- 3. TAB: GURU MAPEL -->
+        <!-- 4. TAB: GURU MAPEL -->
         <section id="content-guru" class="tab-content hidden space-y-6">
             <div class="p-6 sm:p-8 rounded-3xl bg-white border border-emerald-200 shadow-sm">
                 <div class="flex items-center gap-3.5 mb-6 pb-4 border-b border-slate-100">
@@ -257,7 +568,7 @@
             </div>
         </section>
 
-        <!-- 4. TAB: WALI KELAS -->
+        <!-- 5. TAB: WALI KELAS -->
         <section id="content-walas" class="tab-content hidden space-y-6">
             <div class="p-6 sm:p-8 rounded-3xl bg-white border border-indigo-200 shadow-sm">
                 <div class="flex items-center gap-3.5 mb-6 pb-4 border-b border-slate-100">
@@ -299,7 +610,7 @@
             </div>
         </section>
 
-        <!-- 5. TAB: SISWA -->
+        <!-- 6. TAB: SISWA -->
         <section id="content-siswa" class="tab-content hidden space-y-6">
             <div class="p-6 sm:p-8 rounded-3xl bg-white border border-amber-200 shadow-sm">
                 <div class="flex items-center gap-3.5 mb-6 pb-4 border-b border-slate-100">
@@ -337,83 +648,6 @@
                             <span class="inline-block mt-2 px-2.5 py-1 rounded-md bg-amber-50 text-amber-700 font-mono text-[11px] border border-amber-200">Rute: /siswa/dashboard (Tab Rapor)</span>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 6. TAB: MATRIKS RBAC -->
-        <section id="content-matrix" class="tab-content hidden space-y-6">
-            <div class="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm overflow-hidden">
-                <div class="mb-5">
-                    <h2 class="text-lg font-extrabold text-slate-900 flex items-center gap-2">
-                        <span>⚖️</span> Matriks Pembagian Hak Akses (RBAC)
-                    </h2>
-                    <p class="text-xs text-slate-500 mt-1">Pemetaan wewenang pada sistem SIAKAD SMPN 1 Trimurjo</p>
-                </div>
-
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left text-xs border-collapse">
-                        <thead>
-                            <tr class="bg-slate-100 text-slate-700 uppercase font-mono text-[11px]">
-                                <th class="py-3.5 px-4 rounded-l-xl">Fitur Sistem</th>
-                                <th class="py-3.5 px-3 text-center">Tata Usaha (TU)</th>
-                                <th class="py-3.5 px-3 text-center">Guru Mapel</th>
-                                <th class="py-3.5 px-3 text-center">Wali Kelas</th>
-                                <th class="py-3.5 px-3 text-center rounded-r-xl">Siswa</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-100 text-slate-700">
-                            <tr class="hover:bg-slate-50">
-                                <td class="py-3.5 px-4 font-bold text-slate-900">Master Data (Guru, Siswa, Kelas)</td>
-                                <td class="py-3.5 px-3 text-center text-emerald-700 font-extrabold bg-emerald-50/50">✅ CRUD Penuh</td>
-                                <td class="py-3.5 px-3 text-center text-slate-400">❌</td>
-                                <td class="py-3.5 px-3 text-center text-slate-400">❌</td>
-                                <td class="py-3.5 px-3 text-center text-slate-400">❌</td>
-                            </tr>
-                            <tr class="hover:bg-slate-50">
-                                <td class="py-3.5 px-4 font-bold text-slate-900">Menyusun Jadwal KBM</td>
-                                <td class="py-3.5 px-3 text-center text-emerald-700 font-extrabold bg-emerald-50/50">✅ CRUD Penuh</td>
-                                <td class="py-3.5 px-3 text-center text-slate-400">❌</td>
-                                <td class="py-3.5 px-3 text-center text-slate-400">❌</td>
-                                <td class="py-3.5 px-3 text-center text-slate-400">❌</td>
-                            </tr>
-                            <tr class="hover:bg-slate-50">
-                                <td class="py-3.5 px-4 font-bold text-slate-900">Melihat Jadwal Pelajaran</td>
-                                <td class="py-3.5 px-3 text-center text-blue-700 font-bold">✅ Semua Kelas</td>
-                                <td class="py-3.5 px-3 text-center text-emerald-700 font-bold">✅ Jadwal Mengajar</td>
-                                <td class="py-3.5 px-3 text-center text-indigo-700 font-bold">✅ Kelas Binaan</td>
-                                <td class="py-3.5 px-3 text-center text-amber-700 font-bold">✅ Kelas Sendiri</td>
-                            </tr>
-                            <tr class="hover:bg-slate-50">
-                                <td class="py-3.5 px-4 font-bold text-slate-900">Input / Edit Nilai Siswa</td>
-                                <td class="py-3.5 px-3 text-center text-slate-400">❌ Monitoring</td>
-                                <td class="py-3.5 px-3 text-center text-emerald-700 font-extrabold bg-emerald-50/50">✅ Mapel Diampu</td>
-                                <td class="py-3.5 px-3 text-center text-slate-400">❌</td>
-                                <td class="py-3.5 px-3 text-center text-slate-400">❌</td>
-                            </tr>
-                            <tr class="hover:bg-slate-50">
-                                <td class="py-3.5 px-4 font-bold text-slate-900">Rekap & Cetak Leger Nilai</td>
-                                <td class="py-3.5 px-3 text-center text-blue-700 font-bold">✅ Semua Kelas</td>
-                                <td class="py-3.5 px-3 text-center text-slate-400">❌</td>
-                                <td class="py-3.5 px-3 text-center text-indigo-700 font-extrabold bg-indigo-50/50">✅ Cetak Leger</td>
-                                <td class="py-3.5 px-3 text-center text-slate-400">❌</td>
-                            </tr>
-                            <tr class="hover:bg-slate-50">
-                                <td class="py-3.5 px-4 font-bold text-slate-900">Pengesahan / ACC Nilai Akhir</td>
-                                <td class="py-3.5 px-3 text-center text-emerald-700 font-extrabold bg-emerald-50/50">✅ Otoritas Final</td>
-                                <td class="py-3.5 px-3 text-center text-slate-400">❌</td>
-                                <td class="py-3.5 px-3 text-center text-slate-400">❌</td>
-                                <td class="py-3.5 px-3 text-center text-slate-400">❌</td>
-                            </tr>
-                            <tr class="hover:bg-slate-50">
-                                <td class="py-3.5 px-4 font-bold text-slate-900">Melihat Rapor Digital</td>
-                                <td class="py-3.5 px-3 text-center text-blue-700 font-bold">✅ Semua Siswa</td>
-                                <td class="py-3.5 px-3 text-center text-slate-400">❌</td>
-                                <td class="py-3.5 px-3 text-center text-indigo-700 font-bold">✅ Siswa Binaan</td>
-                                <td class="py-3.5 px-3 text-center text-amber-700 font-extrabold bg-amber-50/50">✅ Rapor Pribadi</td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </section>
