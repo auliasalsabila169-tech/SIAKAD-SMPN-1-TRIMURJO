@@ -1,58 +1,220 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🏫 SIAKAD SMP NEGERI 1 TRIMURJO
+### Sistem Informasi Akademik Terpadu Berbasis Cloud & Role-Based Access Control (RBAC)
+> **Tugas Ujian Tengah Semester (UTS) — Basis Data Lanjut | Semester 5**  
+> Repositori Resmi: [https://github.com/auliasalsabila169-tech/SIAKAD-SMPN-1-TRIMURJO](https://github.com/auliasalsabila169-tech/SIAKAD-SMPN-1-TRIMURJO)  
+> Website Live (Hosting Vercel): [https://auliasalsabila.vercel.app](https://auliasalsabila.vercel.app)  
+> Dokumentasi Interaktif & Bagan Matriks: [https://auliasalsabila.vercel.app/alur](https://auliasalsabila.vercel.app/alur)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+---
 
-## About Laravel
+[![Laravel](https://img.shields.io/badge/Laravel-11.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
+[![PHP](https://img.shields.io/badge/PHP-8.2%20%7C%208.3-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://php.net)
+[![TiDB Cloud](https://img.shields.io/badge/Database-TiDB%20Serverless%20(MySQL)-00758F?style=for-the-badge&logo=mysql&logoColor=white)](https://tidbcloud.com)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.x-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
+[![Vercel Deployment](https://img.shields.io/badge/Deployment-Vercel%20Serverless-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://auliasalsabila.vercel.app)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📌 Ringkasan Proyek
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**SIAKAD SMP Negeri 1 Trimurjo** adalah aplikasi sistem informasi akademik komprehensif yang dirancang untuk mendigitalkan seluruh siklus akademik di tingkat sekolah menengah pertama. Sistem ini mengintegrasikan **4 entitas pengguna utama (Tata Usaha, Guru Mata Pelajaran, Wali Kelas, dan Siswa)** dengan basis data terdistribusi di cloud (**TiDB Cloud Serverless MySQL**) yang mendukung koneksi aman via TLS/SSL.
 
-## Learning Laravel
+Aplikasi dibangun dengan arsitektur **Role-Based Access Control (RBAC)** ketat, antarmuka **ultra-responsif ramah smartphone (HP)**, fitur **Mode Siang / Malam (Day & Night Mode)**, serta alur KBM bebas bentrok jam pengajar (*conflict-free schedule*).
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 👥 4 Peran Pengguna & Hak Akses (RBAC)
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+```mermaid
+flowchart TD
+    subgraph AKTOR["👥 PENGGUNA SISTEM"]
+        TU["🏛️ Tata Usaha (Admin)"]
+        GURU["👨‍🏫 Guru Mata Pelajaran"]
+        WALAS["📋 Wali Kelas"]
+        SISWA["🎓 Siswa"]
+    end
 
-## Agentic Development
+    subgraph DATA["🗄️ PANGKALAN DATA (DATABASE)"]
+        DB_MASTER[("Data Master<br/>(Siswa, Guru, Kelas, Mapel)")]
+        DB_JADWAL[("Jadwal KBM<br/>(Plotting Jam & Ruang)")]
+        DB_NILAI[("Nilai Akademik<br/>(Tugas, UTS, UAS, NA)")]
+    end
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+    %% Hak Akses
+    TU ==>|"CRUD Penuh"| DB_MASTER
+    TU ==>|"Penyusunan Tunggal"| DB_JADWAL
+    TU -->|"Pengesahan / ACC"| DB_NILAI
 
-```bash
-composer require laravel/boost --dev
+    GURU -->|"Lihat Jadwal Ajar"| DB_JADWAL
+    GURU ==>|"Input Nilai (C, R, U)"| DB_NILAI
 
-php artisan boost:install
+    WALAS -->|"Monitor KBM Binaan"| DB_JADWAL
+    WALAS -->|"Rekap & Cetak Leger"| DB_NILAI
+
+    SISWA -->|"Lihat Jadwal Belajar"| DB_JADWAL
+    SISWA -->|"Lihat Rapor Mandiri"| DB_NILAI
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+1. **🏛️ Tata Usaha (Admin / TU):**
+   - Mengelola master data induk (120 Siswa, 10 Guru, 6 Rombel Kelas, 10 Mata Pelajaran).
+   - Otoritas eksklusif pembuatan dan penyuntingan jadwal KBM mingguan.
+   - Melakukan pengawasan rekapitulasi nilai dan menerbitkan pengesahan (*ACC Nilai*).
+2. **👨‍🏫 Guru Mata Pelajaran:**
+   - Memeriksa jadwal mengajar mingguan sesuai jam dan rombel.
+   - Menginput dan memperbarui nilai asesmen siswa (Formatif/Tugas, UTS, UAS, dan Nilai Akhir).
+3. **📋 Wali Kelas (6 Rombel):**
+   - Memantau kelengkapan nilai dari seluruh guru mapel untuk siswa kelas binaannya.
+   - Merekap buku Leger nilai terpadu dan mencetak Leger resmi lengkap dengan ranking kelas.
+4. **🎓 Siswa:**
+   - Login mandiri menggunakan nomor NISN atau email dinas siswa.
+   - Memeriksa jadwal pelajaran harian/mingguan di layar handphone.
+   - Mengakses transkrip nilai capaian pembelajaran dan rapor semester digital.
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 🗄️ Skema Basis Data & Matriks Entitas
 
-## Code of Conduct
+### Matriks Operasi CRUD (Role-Based Matrix):
+| Entitas / Tabel | Tata Usaha (TU) | Guru Mapel | Wali Kelas | Siswa |
+| :--- | :---: | :---: | :---: | :---: |
+| **`users`** *(Akun Login)* | **C, R, U, D** | **R, U** *(Sendiri)* | **R, U** *(Sendiri)* | **R, U** *(Sendiri)* |
+| **`guru`** *(Data Pendidik)* | **C, R, U, D** | **R** *(Profil)* | **R** *(Profil)* | **R** *(Nama Guru)* |
+| **`siswas`** *(Buku Induk)* | **C, R, U, D** | **R** *(Siswa Diajar)* | **R** *(Siswa Binaan)* | **R** *(Profil Pribadi)* |
+| **`kelas`** *(Rombongan Belajar)* | **C, R, U, D** | **R** | **R** *(Kelas Binaan)* | **R** *(Kelas Sendiri)* |
+| **`mata_pelajaran`** *(Kurikulum)* | **C, R, U, D** | **R** | **R** | **R** |
+| **`jadwal`** *(Plotting Sesi KBM)* | **C, R, U, D** | **R** *(Jadwal Ajar)* | **R** *(Jadwal Binaan)* | **R** *(Jadwal Belajar)* |
+| **`nilais`** *(Asesmen & Capaian)* | **R, U** *(Pengesahan ACC)* | **C, R, U** *(Mapel Diampu)* | **R** *(Leger Nilai)* | **R** *(Rapor Sendiri)* |
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+## 📊 Statistik Data Dummy Terpasang
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Basis data online telah diisi dengan data realistis berskala penuh:
+- **120 Data Siswa Lengkap** (Tepat 20 siswa pada masing-masing rombel: VII A, VII B, VIII A, VIII B, IX A, IX B).
+- **10 Guru Pengajar** (Masing-masing mengampu 2 s/d 6 sesi KBM per minggu).
+- **6 Wali Kelas** (1 Walas definitif per rombongan belajar).
+- **10 Mata Pelajaran Pokok SMP** (IPA, Matematika, B. Indonesia, B. Inggris, PAI, PPKn, IPS, Seni Budaya, PJOK, Informatika).
+- **60 Sesi Jadwal KBM** (Senin s/d Jumat terdistribusi rapi tanpa bentrok waktu guru).
+- **1,200 Nilai Siswa Lengkap** (100% siswa memiliki nilai terisi di semua mapel dan berstatus disahkan oleh TU).
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 🔑 Kredensial Akun Pengujian (Demo Login)
+
+Seluruh akun menggunakan kata sandi default: `password`
+
+| Peran | Nama / Jabatan | Email / ID / NISN | Kata Sandi |
+| :--- | :--- | :--- | :---: |
+| **Tata Usaha** | Administrator TU | `tu@smpn1trimurjo.sch.id` | `password` |
+| **Wali Kelas VII A** | Istri Sugiyatmi, S.Pd. | `sugiyatmi@smpn1trimurjo.sch.id` | `password` |
+| **Wali Kelas VII B** | Arya Pratama, S.Pd. | `arya@smpn1trimurjo.sch.id` | `password` |
+| **Wali Kelas VIII A** | Drs. Hendro Wibowo, M.Pd. | `hendro@smpn1trimurjo.sch.id` | `password` |
+| **Wali Kelas VIII B** | Sri Wahyuni, S.Pd. | `sri.wahyuni@smpn1trimurjo.sch.id` | `password` |
+| **Wali Kelas IX A** | Rahmat Hidayat, S.Kom., M.T. | `rahmat.hidayat@smpn1trimurjo.sch.id` | `password` |
+| **Wali Kelas IX B** | Dra. Hj. Siti Fatimah, M.Pd. | `siti.fatimah@smpn1trimurjo.sch.id` | `password` |
+| **Guru Matematika** | Budi Santoso, S.Pd. | `budi@smpn1trimurjo.sch.id` | `password` |
+| **Siswa VII A** | Ahmad Pratama | `0091234567` | `password` |
+| **Siswa VII B** | Eka Putri Handayani | `0092100006` | `password` |
+| **Siswa VIII A** | Joko Tri Atmojo | `0082100011` | `password` |
+| **Siswa IX A** | Tegar Prasetyo | `0072100021` | `password` |
+
+*(Pada halaman login tersedia fitur **1-Click Quick Demo** yang otomatis mengisi email dan sandi dengan satu sentuhan).*
+
+---
+
+## ✨ Fitur Unggulan Sistem
+
+1. **🎨 Tampilan Modern & Mode Siang / Malam (Day/Night Mode):**
+   - Menggunakan Tailwind CSS dengan transisi lembut tanpa kedipan (*flicker-free*), tersimpan permanen di `localStorage.theme`.
+2. **📱 Pengalaman Mobile Sempurna (Bottom Navigation Bar):**
+   - Saat diakses melalui smartphone/HP, muncul menu bilah bawah (*bottom bar*) mirip aplikasi Android/iOS untuk navigasi instan: Beranda, Jadwal, Nilai, Siswa, dan Menu Lengkap.
+3. **⚡ Jam Akademik Realtime WIB:**
+   - Widget waktu detik demi detik di layar masuk untuk sinkronisasi KBM sekolah.
+4. **🖨️ Cetak Leger Nilai & Transkrip Rapor Digital:**
+   - Cetak cetakan resmi yang disesuaikan secara khusus untuk format kertas cetak (`@media print`).
+5. **☁️ Cloud Database Resilience:**
+   - Dilengkapi TLS CA certificate validation (`ca.pem`) untuk keamanan lalu lintas data cloud.
+
+---
+
+## 🚀 Panduan Instalasi Lokal
+
+### 1. Klon Repositori
+```bash
+git clone https://github.com/auliasalsabila169-tech/SIAKAD-SMPN-1-TRIMURJO.git
+cd SIAKAD-SMPN-1-TRIMURJO
+```
+
+### 2. Pasang Dependensi
+```bash
+composer install
+npm install && npm run build
+```
+
+### 3. Konfigurasi Lingkungan (.env)
+Salin `.env.example` menjadi `.env` dan sesuaikan koneksi basis data:
+```env
+APP_NAME="SIAKAD SMPN 1 Trimurjo"
+APP_ENV=local
+APP_KEY=base64:...
+APP_DEBUG=true
+APP_URL=http://localhost:8000
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=siakad_smpn1_trimurjo
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### 4. Impor Basis Data
+Impor file `siakad_smpn1_trimurjo.sql` yang telah menyertakan 120 siswa, 10 guru, dan 1,200 nilai:
+```bash
+mysql -u root -p siakad_smpn1_trimurjo < siakad_smpn1_trimurjo.sql
+```
+
+### 5. Jalankan Server Lokal
+```bash
+php artisan serve
+```
+Buka browser pada alamat `http://127.0.0.1:8000`.
+
+---
+
+## 🏛️ Struktur Direktori Utama
+
+```
+siakad-smp/
+├── app/
+│   ├── Http/Controllers/
+│   │   ├── AuthController.php      # Autentikasi multi-peran (Email / NISN)
+│   │   ├── TuController.php        # Controller modul Tata Usaha
+│   │   ├── WalasController.php     # Controller modul Wali Kelas
+│   │   ├── GuruController.php      # Controller modul Guru Mapel
+│   │   └── SiswaController.php     # Controller modul Siswa Mandiri
+│   └── Models/                     # User, Siswa, Guru, Kelas, Jadwal, Nilai
+├── config/
+│   └── database.php                # Konfigurasi PDO SSL MySQL / TiDB Cloud
+├── database/
+│   └── seeders/                    # Database seeder scripts
+├── public/
+│   ├── alur-siakad.html            # Halaman statis dokumentasi alur & matriks
+│   └── images/                     # Aset logo sekolah & favicon
+├── resources/views/
+│   ├── auth/                       # login.blade.php & register.blade.php
+│   ├── layouts/app.blade.php       # Layout utama dengan Day/Night & Mobile Nav
+│   ├── panduan/alur.blade.php      # Tampilan interaktif alur & bagan matriks
+│   ├── tu/                         # Dashboard, Siswa, Guru, Kelas, Jadwal, Nilai
+│   ├── walas/                      # Dashboard, Leger Nilai, Cetak Rapor
+│   ├── guru/                       # Dashboard, Input Nilai Siswa
+│   └── siswa/                      # Dashboard mandiri, Jadwal KBM, Transkrip
+├── vercel.json                     # Konfigurasi deployment Vercel Serverless
+└── siakad_smpn1_trimurjo.sql       # Dump database lengkap (120 Siswa, 1,200 Nilai)
+```
+
+---
+
+## 📄 Lisensi
+Hak Cipta © 2026 SMP Negeri 1 Trimurjo & Pengembang.  
+Dikembangkan untuk pemenuhan tugas akademik **Ujian Tengah Semester (UTS) Basis Data Lanjut**.
