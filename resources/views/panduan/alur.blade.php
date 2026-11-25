@@ -58,38 +58,38 @@
         </div>
     </header>
 
-    <!-- STATISTIK DATA BASIS DATA SAAT INI (30+ DATA DUMMY BARU) -->
+    <!-- STATISTIK DATA BASIS DATA SAAT INI (10 GURU, 6 WALAS, 248 NILAI) -->
     <section class="max-w-6xl mx-auto mb-6">
         <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 text-center">
             <div class="p-2.5 rounded-xl bg-blue-50/60 border border-blue-100">
                 <div class="text-xs text-blue-600 font-bold uppercase tracking-wider">Siswa Terdaftar</div>
                 <div class="text-xl sm:text-2xl font-black text-blue-700 font-mono mt-0.5">34</div>
-                <div class="text-[10px] text-blue-500 font-semibold">+30 Data Baru</div>
+                <div class="text-[10px] text-blue-500 font-semibold">100% Nilai Terisi</div>
             </div>
             <div class="p-2.5 rounded-xl bg-emerald-50/60 border border-emerald-100">
                 <div class="text-xs text-emerald-600 font-bold uppercase tracking-wider">Akun Pengguna</div>
-                <div class="text-xl sm:text-2xl font-black text-emerald-700 font-mono mt-0.5">41</div>
-                <div class="text-[10px] text-emerald-500 font-semibold">+33 Akun Baru</div>
+                <div class="text-xl sm:text-2xl font-black text-emerald-700 font-mono mt-0.5">45</div>
+                <div class="text-[10px] text-emerald-500 font-semibold">Aktif & Terverifikasi</div>
             </div>
             <div class="p-2.5 rounded-xl bg-indigo-50/60 border border-indigo-100">
-                <div class="text-xs text-indigo-600 font-bold uppercase tracking-wider">Guru & Walas</div>
-                <div class="text-xl sm:text-2xl font-black text-indigo-700 font-mono mt-0.5">6</div>
-                <div class="text-[10px] text-indigo-500 font-semibold">+3 Walas Baru</div>
+                <div class="text-xs text-indigo-600 font-bold uppercase tracking-wider">Guru Pengajar</div>
+                <div class="text-xl sm:text-2xl font-black text-indigo-700 font-mono mt-0.5">10</div>
+                <div class="text-[10px] text-indigo-500 font-semibold">Semua Mengajar KBM</div>
             </div>
             <div class="p-2.5 rounded-xl bg-amber-50/60 border border-amber-100">
-                <div class="text-xs text-amber-600 font-bold uppercase tracking-wider">Rombel Kelas</div>
+                <div class="text-xs text-amber-600 font-bold uppercase tracking-wider">Wali Kelas</div>
                 <div class="text-xl sm:text-2xl font-black text-amber-700 font-mono mt-0.5">6</div>
-                <div class="text-[10px] text-amber-500 font-semibold">VII A - IX B</div>
+                <div class="text-[10px] text-amber-500 font-semibold">6 Rombel (VII A - IX B)</div>
             </div>
             <div class="p-2.5 rounded-xl bg-purple-50/60 border border-purple-100">
                 <div class="text-xs text-purple-600 font-bold uppercase tracking-wider">Jadwal KBM</div>
-                <div class="text-xl sm:text-2xl font-black text-purple-700 font-mono mt-0.5">8</div>
-                <div class="text-[10px] text-purple-500 font-semibold">Mapel Terjadwal</div>
+                <div class="text-xl sm:text-2xl font-black text-purple-700 font-mono mt-0.5">42</div>
+                <div class="text-[10px] text-purple-500 font-semibold">10 Mapel Terjadwal</div>
             </div>
             <div class="p-2.5 rounded-xl bg-rose-50/60 border border-rose-100">
-                <div class="text-xs text-rose-600 font-bold uppercase tracking-wider">Nilai Masuk</div>
-                <div class="text-xl sm:text-2xl font-black text-rose-700 font-mono mt-0.5">58</div>
-                <div class="text-[10px] text-rose-500 font-semibold">+53 Nilai Baru</div>
+                <div class="text-xs text-rose-600 font-bold uppercase tracking-wider">Nilai Lengkap</div>
+                <div class="text-xl sm:text-2xl font-black text-rose-700 font-mono mt-0.5">248</div>
+                <div class="text-[10px] text-rose-500 font-semibold">100% Sah (ACC TU)</div>
             </div>
         </div>
     </section>
