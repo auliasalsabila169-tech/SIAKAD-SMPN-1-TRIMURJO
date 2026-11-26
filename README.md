@@ -1,11 +1,16 @@
 # 🏫 SIAKAD SMP NEGERI 1 TRIMURJO
 ### Sistem Informasi Akademik Terpadu Berbasis Cloud & Role-Based Access Control (RBAC)
 > **Tugas Ujian Tengah Semester (UTS) — Basis Data Lanjut | Semester 5**  
-> Repositori Resmi: [https://github.com/auliasalsabila169-tech/SIAKAD-SMPN-1-TRIMURJO](https://github.com/auliasalsabila169-tech/SIAKAD-SMPN-1-TRIMURJO)  
-> Website Live (Hosting Vercel): [https://auliasalsabila.vercel.app](https://auliasalsabila.vercel.app)  
-> Dokumentasi Interaktif & Bagan Matriks: [https://auliasalsabila.vercel.app/alur](https://auliasalsabila.vercel.app/alur)
+> **Penyusun:** Shofiana Kartika (NPM: 22430126) | Program Studi Ilmu Komputer, Universitas Muhammadiyah Metro  
+> **Repositori Resmi:** [https://github.com/auliasalsabila169-tech/SIAKAD-SMPN-1-TRIMURJO](https://github.com/auliasalsabila169-tech/SIAKAD-SMPN-1-TRIMURJO)  
+> **Website Live (Hosting Vercel):** [https://auliasalsabila.vercel.app](https://auliasalsabila.vercel.app)  
+> **Dokumentasi Interaktif & Bagan Matriks:** [https://auliasalsabila.vercel.app/alur](https://auliasalsabila.vercel.app/alur)  
+> **📄 Laporan Resmi (PDF):** [**Unduh / Lihat LAPORAN_UTS_SIAKAD_SMPN1_TRIMURJO.pdf**](./LAPORAN_UTS_SIAKAD_SMPN1_TRIMURJO.pdf)  
+> **📑 Laporan Lengkap (Markdown):** [**Baca LAPORAN_UTS.md**](./LAPORAN_UTS.md)  
 
 ---
+
+[![Download PDF](https://img.shields.io/badge/Laporan_UTS-Download_PDF-0284c7?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](./LAPORAN_UTS_SIAKAD_SMPN1_TRIMURJO.pdf)
 
 [![Laravel](https://img.shields.io/badge/Laravel-11.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
 [![PHP](https://img.shields.io/badge/PHP-8.2%20%7C%208.3-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://php.net)
