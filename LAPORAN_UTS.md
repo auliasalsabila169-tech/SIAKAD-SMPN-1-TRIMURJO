@@ -6,11 +6,11 @@
 ### IDENTITAS MAHASISWA & PROYEK
 * **Judul Proyek:** Perancangan & Implementasi Sistem Informasi Akademik (SIAKAD) Terpadu Berbasis Cloud & Multi-Peran (RBAC)
 * **Studi Kasus:** SMP Negeri 1 Trimurjo, Kabupaten Lampung Tengah, Provinsi Lampung
-* **Penyusun:** 
-  * Nama: **Shofiana Kartika** (NPM: **22430126**)
-  * Kolaborator / Akun: **Aulia Salsabila**
+* **Penyusun:** **Aulia Salsabila**
+* **NPM:** **24430076**
+* **Mata Kuliah:** Basis Data Lanjut (Semester 5)
 * **Program Studi:** Ilmu Komputer
-* **Fakultas:** Fakultas Ilmu Komputer
+* **Fakultas:** Fakultas Ilmu Komputer (FIKOM)
 * **Institusi:** Universitas Muhammadiyah Metro
 * **Tahun Akademik:** 2026
 * **Repositori GitHub:** [https://github.com/auliasalsabila169-tech/SIAKAD-SMPN-1-TRIMURJO](https://github.com/auliasalsabila169-tech/SIAKAD-SMPN-1-TRIMURJO)

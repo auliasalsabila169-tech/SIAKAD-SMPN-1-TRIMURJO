@@ -1,7 +1,7 @@
 # 🏫 SIAKAD SMP NEGERI 1 TRIMURJO
 ### Sistem Informasi Akademik Terpadu Berbasis Cloud & Role-Based Access Control (RBAC)
 > **Tugas Ujian Tengah Semester (UTS) — Basis Data Lanjut | Semester 5**  
-> **Penyusun:** Shofiana Kartika (NPM: 22430126) | Program Studi Ilmu Komputer, Universitas Muhammadiyah Metro  
+> **Penyusun:** Aulia Salsabila (NPM: 24430076) | Program Studi S1 Ilmu Komputer, Fakultas Ilmu Komputer (FIKOM), Universitas Muhammadiyah Metro  
 > **Repositori Resmi:** [https://github.com/auliasalsabila169-tech/SIAKAD-SMPN-1-TRIMURJO](https://github.com/auliasalsabila169-tech/SIAKAD-SMPN-1-TRIMURJO)  
 > **Website Live (Hosting Vercel):** [https://auliasalsabila.vercel.app](https://auliasalsabila.vercel.app)  
 > **Dokumentasi Interaktif & Bagan Matriks:** [https://auliasalsabila.vercel.app/alur](https://auliasalsabila.vercel.app/alur)  

@@ -6,7 +6,7 @@ import sys
 # Paths
 base_dir = r"d:\SEMESTER 5\TUGAS UTS BASIS DATA LANJUT"
 project_dir = os.path.join(base_dir, "siakad-smp")
-logo_path = os.path.join(base_dir, "logo-sekolah.png")
+logo_path = os.path.join(base_dir, "logo_um_metro.png")
 relasi_path = os.path.join(base_dir, "FOTO", "relasi.jpg")
 html_output = os.path.join(project_dir, "scripts", "laporan_uts.html")
 pdf_output = os.path.join(project_dir, "LAPORAN_UTS_SIAKAD_SMPN1_TRIMURJO.pdf")
@@ -445,7 +445,7 @@ html_content = f"""<!DOCTYPE html>
   </div>
 
   <div class="cover-logo">
-    <img src="data:image/png;base64,{logo_b64}" alt="Logo SMP Negeri 1 Trimurjo">
+    <img src="data:image/png;base64,{logo_b64}" alt="Logo Universitas Muhammadiyah Metro - Fakultas Ilmu Komputer">
   </div>
 
   <div class="cover-meta">
@@ -453,12 +453,12 @@ html_content = f"""<!DOCTYPE html>
       <tr>
         <td class="label">Nama Penyusun</td>
         <td>:</td>
-        <td class="val">SHOFIANA KARTIKA</td>
+        <td class="val">AULIA SALSABILA</td>
       </tr>
       <tr>
         <td class="label">NPM</td>
         <td>:</td>
-        <td class="val">22430126</td>
+        <td class="val">24430076</td>
       </tr>
       <tr>
         <td class="label">Mata Kuliah</td>
@@ -468,12 +468,12 @@ html_content = f"""<!DOCTYPE html>
       <tr>
         <td class="label">Program Studi</td>
         <td>:</td>
-        <td class="val">Ilmu Komputer</td>
+        <td class="val">S1 Ilmu Komputer</td>
       </tr>
       <tr>
         <td class="label">Fakultas</td>
         <td>:</td>
-        <td class="val">Fakultas Ilmu Komputer</td>
+        <td class="val">Fakultas Ilmu Komputer (FIKOM)</td>
       </tr>
       <tr>
         <td class="label">Institusi</td>
@@ -1043,7 +1043,7 @@ result = subprocess.run(cmd, capture_output=True, text=True)
 print("Return code:", result.returncode)
 if os.path.exists(pdf_output):
     size_kb = os.path.getsize(pdf_output) / 1024
-    print(f"SUCCESS: PDF generated successfully at {pdf_output} ({size_kb:.1f} KB)")
+    print(f"SUCCESS: PDF generated successfully ({size_kb:.1f} KB)")
 else:
     print("ERROR: PDF file not found after Edge execution.")
     print("Stderr:", result.stderr)
